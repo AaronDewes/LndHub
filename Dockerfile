@@ -4,7 +4,7 @@ FROM alpine:latest AS perms
 RUN adduser --disabled-password \
             --home "/lndhub" \
             --gecos "" \
-            "lnd"
+            "lndhub"
 
 FROM node:buster-slim AS builder
 
@@ -30,7 +30,7 @@ COPY  --from=builder /lndhub /lndhub
 RUN rm -rf .git
 
 # Create logs folder and ensure permissions are set correctly
-RUN mkdir /lndhub/logs && chown -R lndhun:lndhub /lndhub
+RUN mkdir /lndhub/logs && chown -R lndhub:lndhub /lndhub
 
 USER lndhub
 
