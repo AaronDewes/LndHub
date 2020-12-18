@@ -11,12 +11,16 @@ FROM node:buster-slim AS builder
 # These packages are required for building LNDHub
 RUN apt-get update && apt-get -y install git python3
 
-# TODO: Switch to official images once my PR is merged
-RUN git clone https://github.com/AaronDewes/LndHub.git -b 3c3c8462d0c2b6ee2f5545271a37488afc11e138 /lndhub
-
 WORKDIR /lndhub
 
+# Copy 'yarn.lock' and 'package.json'
+COPY package.json package-lock.json ./
+
+# Install dependencies
 RUN npm i
+
+# Copy project files and folders to the current working directory
+COPY . .
 
 FROM node:buster-slim
 
