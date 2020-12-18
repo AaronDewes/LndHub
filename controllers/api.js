@@ -38,7 +38,7 @@ lightning.getInfo({}, function (err, info) {
   if (err) {
     console.error('lnd failure');
     console.dir(err);
-    //process.exit(3);
+    process.exit(3);
   }
   if (info) {
     console.info(info);
@@ -46,7 +46,7 @@ lightning.getInfo({}, function (err, info) {
       console.error('BTC Node is not caught up');
       process.exit(1);
     }
-    if (!info.synced_to_chain && !info.syncedToChain) {
+    if (!info.synced_to_chain) {
       console.error('lnd not synced');
       process.exit(4);
     }
