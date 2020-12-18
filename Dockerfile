@@ -31,7 +31,6 @@ RUN rm -rf .git
 
 # Create logs folder and ensure permissions are set correctly
 RUN mkdir /lndhub/logs && chown -R lndhub:lndhub /lndhub
-
 USER lndhub
 
 ENV PORT=3000
