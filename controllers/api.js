@@ -38,7 +38,7 @@ lightning.getInfo({}, function (err, info) {
   if (err) {
     console.error('lnd failure');
     console.dir(err);
-    process.exit(3);
+    //process.exit(3);
   }
   if (info) {
     console.info(info);
