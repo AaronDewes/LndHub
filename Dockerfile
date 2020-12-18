@@ -12,7 +12,7 @@ FROM node:buster-slim AS builder
 RUN apt-get update && apt-get -y install git python3
 
 # TODO: Switch to official images once my PR is merged
-RUN git clone https://github.com/AaronDewes/LndHub.git -b update-dependencies /lndhub
+RUN git clone https://github.com/AaronDewes/LndHub.git -b umbrel /lndhub
 
 WORKDIR /lndhub
 
