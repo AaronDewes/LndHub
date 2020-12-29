@@ -42,7 +42,7 @@ lightning.getInfo({}, function (err, info) {
   }
   if (info) {
     console.info(info);
-    if (!info.testnet && info.block_height < MIN_BTC_BLOCK) {
+    if (!info.testnet && !config.regtest && info.block_height < MIN_BTC_BLOCK) {
       console.error('BTC Node is not caught up');
       process.exit(1);
     }
