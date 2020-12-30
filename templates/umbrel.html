@@ -3,7 +3,7 @@
     <head>
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <script src="/static/qrcode.min.js"></script>
+        <script src="/static/js/qrcode.min.js"></script>
         <style type="text/css">          @charset "UTF-8";
             .fa-copy:before { content: "\f0c5"; }
             .far { font-family: 'Font Awesome 5 Free'; font-weight: 400; }
@@ -84,8 +84,8 @@
         <input value="{{torURL}}" id="torURL" type="text" readonly="" class="copy" onclick="copyContent(document.getElementById('torURL'));">
         <button class="copy" onclick="copyContent(document.getElementById('torURL'));"><div class="far fa-copy"></div></button><br>
         <script>
-            document.getElementById("deeplink").href = "bluewallet:setlndhuburl?url=" + encodeURIComponent(getElementById("torURL").value);
-            new QRCode(document.getElementById("QRCode"), "bluewallet:setlndhuburl?url=" + encodeURIComponent(getElementById("torURL").value));
+            document.getElementById("deeplink").href = "bluewallet:setlndhuburl?url=" + encodeURIComponent(document.getElementById("torURL").value);
+            new QRCode(document.getElementById("QRCode"), "bluewallet:setlndhuburl?url=" + encodeURIComponent(document.getElementById("torURL").value));
         </script>
     </body>
 </html>
