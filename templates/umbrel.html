@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <style type="text/css">          @charset "UTF-8";
+            .fa-copy:before { content: "\f0c5"; }
+            .far { font-family: 'Font Awesome 5 Free'; font-weight: 400; }
+            @font-face {
+                font-family: 'Font Awesome 5 Free';
+                font-style: normal;
+                font-weight: 400;
+                font-display: block;
+                src: url("/static/webfonts/fa-regular-400.eot");
+                src: url("/static/webfonts/fa-regular-400.eot?#iefix") format("embedded-opentype"), url("/static/webfonts/fa-regular-400.woff2") format("woff2"), url("/static/webfonts/fa-regular-400.woff") format("woff"), url("/static/webfonts/fa-regular-400.ttf") format("truetype"), url("/static/webfonts/fa-regular-400.svg#fontawesome") format("svg");
+            }
+            button.copy {
+                border: 2px dashed grey;
+                padding: 0.7rem 1rem;
+                border-radius: 0.4rem;
+                margin: 0.5rem;
+                outline: none;
+                background: white;
+                display: inline;
+                margin-left: calc(-0.8rem - 8px);
+                border-bottom-left-radius: 0;
+                border-top-left-radius: 0;
+            }
+            input.copy {
+                border: 2px dashed grey;
+                padding: 0.7rem 1rem;
+                border-radius: 0.4rem;
+                margin: 0.5rem;
+                outline: none;
+                background: white;
+                display: inline;
+                border-bottom-right-radius: 0;
+                border-top-right-radius: 0;
+            }
+        </style>
+        <meta content="width=640, maximum-scale=1.0" name="viewport">
+        <meta content="http://lndhub.io" property="og:url">
+        <meta content="lndhub.io" property="og:title">
+        <meta content="lndhub" property="og:description">
+        <meta content="800" property="og:image:width">
+        <meta content="800" property="og:image:height">
+        <title>LndHub</title>
+        <meta content="command line, lndhub" name="keywords">
+        <meta content="command-line lndhub" name="description">
+        <script>
+            function copyContent(element) {
+                if(element.value != "Copied!") {
+                    element.select();
+                    element.setSelectionRange(0, 99999);
+                    document.execCommand("copy");
+                    let originalContent = element.value;
+                    element.value = "Copied!";
+                    setTimeout(function() { element.value = originalContent; }, 1000);
+                }
+            }
+        </script>
+    </head>
+    <body style='background: none;text-align: center;font-family: -apple-system, BlinkMacSystemFont, "Roboto", "Helvetica Neue", "Segoe UI", "Arial", "Noto Sans", sans-serif !important;'>
+        <img src="/static/img/umbrel.svg" style="margin: 1rem;">
+        <img src="/static/img/bluewallet.svg" style="margin: 1rem;">
+        <h1 style="font-size: xxx-large;">Welcome!</h1>
+        This app allows you to connect BlueWallet to your Umbrel.
+        <div style="width: fit-content; margin: 0 auto;text-align: left;">
+            <ol>
+                <li>Open the BlueWallet app.</li>
+                <li>Open the settings of BlueWallet.</li>
+                <li>Select "Network" and then "Lightning Settings".</li>
+                <li>Now enter the follwing URL and press "Save":</li>
+            </ol>
+        </div>
+        <input value="{{torURL}}" id="torURL" type="text" readonly="" class="copy" onclick="copyContent(document.getElementById('torURL'));">
+        <button class="copy" onclick="copyContent(document.getElementById('torURL'));"><div class="far fa-copy"></div></button><br>
+    </body>
+</html>

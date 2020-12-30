@@ -4,6 +4,7 @@ let fs = require('fs');
 let mustache = require('mustache');
 let lightning = require('../lightning');
 let logger = require('../utils/logger');
+let umbrelData = { torURL: fs.readFileSync(__dirname + "/../hostname")}
 
 let lightningGetInfo = {};
 let lightningListChannels = {};
@@ -94,6 +95,13 @@ router.get('/about', function (req, res) {
   let html = fs.readFileSync('./templates/about.html').toString('utf8');
   res.setHeader('Content-Type', 'text/html');
   return res.status(200).send(mustache.render(html, {}));
+});
+
+router.get('/umbrel', function (req, res) {
+  logger.log('/umbrel', [req.id]);
+  let html = fs.readFileSync('./templates/umbrel.html').toString('utf8');
+  res.setHeader('Content-Type', 'text/html');
+  return res.status(200).send(mustache.render(html, Object.assign({}, umbrelData)));
 });
 
 router.use(function (req, res) {

@@ -46,7 +46,7 @@ lightning.getInfo({}, function (err, info) {
       console.error('BTC Node is not caught up');
       process.exit(1);
     }
-    if (!info.synced_to_chain) {
+    if (!info.synced_to_chain && !config.regtest) {
       console.error('lnd not synced');
       process.exit(4);
     }
