@@ -78,14 +78,16 @@
                 <li>Now enter the follwing URL and press "Save":</li>
             </ol>
         </div>
-        You can also open this page on your phone and click <a id="deeplink">here</a> or scan the QR code.
+        You can also open this page on your phone and click <a id="deeplink">here</a> or scan the QR code using either your phone or the BlueWallet app.
         <div id="QRCode"></div>
 
         <input value="{{torURL}}" id="torURL" type="text" readonly="" class="copy" onclick="copyContent(document.getElementById('torURL'));">
         <button class="copy" onclick="copyContent(document.getElementById('torURL'));"><div class="far fa-copy"></div></button><br>
         <script>
-            document.getElementById("deeplink").href = "bluewallet:setlndhuburl?url=" + encodeURIComponent(document.getElementById("torURL").value);
-            new QRCode(document.getElementById("QRCode"), "bluewallet:setlndhuburl?url=" + encodeURIComponent(document.getElementById("torURL").value));
+            const newValue = "http://" + document.getElementById("torURL").value;
+            document.getElementById("torURL").value = newValue;
+            document.getElementById("deeplink").href = "bluewallet:setlndhuburl?url=" + encodeURIComponent("http://" + document.getElementById("torURL").value);
+            new QRCode(document.getElementById("QRCode"), "bluewallet:setlndhuburl?url=" + encodeURIComponent("http://" + document.getElementById("torURL").value));
         </script>
     </body>
 </html>
