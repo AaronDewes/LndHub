@@ -1,10 +1,9 @@
-let express = require('express');
-let router = express.Router();
-let fs = require('fs');
-let mustache = require('mustache');
-let lightning = require('../lightning');
-let logger = require('../utils/logger');
-var qr = require('qr-image');
+const express = require('express');
+const router = express.Router();
+const mustache = require('mustache');
+const lightning = require('../lightning');
+const logger = require('../utils/logger');
+const qr = require('qr-image');
 const fs = require("fs");
 
 let lightningGetInfo = {};
