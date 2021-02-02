@@ -4,7 +4,6 @@ const mustache = require('mustache');
 const lightning = require('../lightning');
 const logger = require('../utils/logger');
 const qr = require('qr-image');
-const fs = require("fs");
 
 let lightningGetInfo = {};
 let lightningListChannels = {};
@@ -92,8 +91,8 @@ router.get('/', function (req, res) {
 
 router.get('/qr', function (req, res) {
   let host = req.headers.host;
-  if (fs.existsSync(__dirname + "/../hostname")) {
-    host = { torURL: fs.readFileSync(__dirname + "/../hostname")}
+  if (process.env.TOR_URL) {
+    host = process.env.TOR_URL;
   }
   const url = "bluewallet:setlndhuburl?url=" + encodeURIComponent(req.protocol + '://' + host);
   var code = qr.image(url, { type: 'png' });
